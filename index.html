@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Repaso de Castellano - 6º Primaria (Unidad 2)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@500;600;700&display=swap');
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #f8fafc;
+        }
+        h1, h2, h3, .font-heading {
+            font-family: 'Fredoka', sans-serif;
+        }
+        .card-hover {
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.1);
+        }
+        .tab-btn.active {
+            background-color: #0d9488;
+            color: white;
+            box-shadow: 0 4px 6px -1px rgba(13, 148, 136, 0.3);
+        }
+    </style>
+</head>
+<body class="min-h-screen text-slate-800 flex flex-col bg-slate-50">
+
+    <!-- NAV HEADER -->
+    <header class="bg-teal-700 text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="showSection('home')">
+                <div class="bg-white/10 p-2.5 rounded-2xl backdrop-blur-sm border border-white/20">
+                    <i class="fa-solid fa-graduation-cap text-2xl text-teal-200"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold leading-tight">Lengua Castellana 6º</h1>
+                    <span class="text-xs text-teal-200 font-medium">Unidad 2: El Verbo, Ortografía y Vocabulario</span>
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-3">
+                <div class="bg-teal-800/80 px-3.5 py-1.5 rounded-full flex items-center gap-2 border border-teal-600/50">
+                    <i class="fa-solid fa-star text-amber-300"></i>
+                    <span id="score" class="font-bold text-sm">0</span> <span class="text-xs text-teal-200 font-semibold">pts</span>
+                </div>
+                <button onclick="showSection('home')" class="bg-teal-600 hover:bg-teal-500 p-2 rounded-xl transition text-white" title="Inicio">
+                    <i class="fa-solid fa-house"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTAINER -->
+    <main class="max-w-5xl mx-auto px-4 py-6 flex-grow w-full">
+
+        <!-- SECTION: HOME -->
+        <section id="sec-home" class="space-y-6">
+            <!-- Hero Banner -->
+            <div class="bg-gradient-to-r from-teal-600 via-emerald-600 to-teal-800 rounded-3xl p-6 sm:p-8 text-white shadow-xl relative overflow-hidden">
+                <div class="absolute -right-10 -bottom-10 opacity-10 pointer-events-none">
+                    <i class="fa-solid fa-book-open text-[200px]"></i>
+                </div>
+                <div class="relative z-10 max-w-2xl space-y-3">
+                    <span class="bg-teal-500/40 text-teal-100 text-xs font-bold px-3 py-1 rounded-full border border-teal-300/30">
+                        Entrenamiento interactivo
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">¡Hola, superalumno/a! 👋</h2>
+                    <p class="text-teal-100 text-sm sm:text-base leading-relaxed">
+                        Elige una de las áreas para repasar los contenidos clave del Tema 2 o ponte a prueba con el examen interactivo final.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Modules Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                
+                <!-- Card 1: Verbs -->
+                <div onclick="startModule('verbs')" class="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-sm card-hover cursor-pointer flex flex-col justify-between group">
+                    <div class="space-y-3">
+                        <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-running"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-800">1. El Verbo (I y II)</h3>
+                        <p class="text-xs text-slate-500 leading-relaxed">Conjugaciones, raíz y desinencia, formas no personales (infinitivo, gerundio, participio) y modos (indicativo, subjuntivo e imperativo).</p>
+                    </div>
+                    <div class="pt-4 flex items-center justify-between text-xs font-bold text-blue-600 border-t border-slate-100 mt-4">
+                        <span>7 preguntas</span>
+                        <span class="flex items-center gap-1 group-hover:translate-x-1 transition-transform">Empezar <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                </div>
+
+                <!-- Card 2: Monosyllables Accent -->
+                <div onclick="startModule('accent')" class="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-sm card-hover cursor-pointer flex flex-col justify-between group">
+                    <div class="space-y-3">
+                        <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-italic"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-800">2. Tilde Diacrítica</h3>
+                        <p class="text-xs text-slate-500 leading-relaxed">Diferenciación de monosílabos homónimos: <em>el/él, tu/tú, mi/mí, te/té, si/sí, se/sé</em> e interrogativos.</p>
+                    </div>
+                    <div class="pt-4 flex items-center justify-between text-xs font-bold text-amber-600 border-t border-slate-100 mt-4">
+                        <span>6 preguntas</span>
+                        <span class="flex items-center gap-1 group-hover:translate-x-1 transition-transform">Empezar <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                </div>
+
+                <!-- Card 3: G and J -->
+                <div onclick="startModule('gj')" class="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-sm card-hover cursor-pointer flex flex-col justify-between group">
+                    <div class="space-y-3">
+                        <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-2xl flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-spell-check"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-800">3. Reglas de G y J</h3>
+                        <p class="text-xs text-slate-500 leading-relaxed">Verbos terminados en <em>-ger, -gir, -jear</em>; terminaciones <em>-aje, -eje, -jería, -gio, -gia, -gión</em> y prefijo <em>geo-</em>.</p>
+                    </div>
+                    <div class="pt-4 flex items-center justify-between text-xs font-bold text-purple-600 border-t border-slate-100 mt-4">
+                        <span>6 preguntas</span>
+                        <span class="flex items-center gap-1 group-hover:translate-x-1 transition-transform">Empezar <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                </div>
+
+                <!-- Card 4: Homophones -->
+                <div onclick="startModule('homophones')" class="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-sm card-hover cursor-pointer flex flex-col justify-between group">
+                    <div class="space-y-3">
+                        <div class="w-12 h-12 bg-rose-100 text-rose-600 rounded-2xl flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-equals"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-800">4. Palabras Homófonas</h3>
+                        <p class="text-xs text-slate-500 leading-relaxed">Diferencia significado y escritura: <em>tubo/tuvo, baca/vaca, hierba/hierva, ay/hay, he/e, bota/vota</em>.</p>
+                    </div>
+                    <div class="pt-4 flex items-center justify-between text-xs font-bold text-rose-600 border-t border-slate-100 mt-4">
+                        <span>6 preguntas</span>
+                        <span class="flex items-center gap-1 group-hover:translate-x-1 transition-transform">Empezar <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                </div>
+
+                <!-- Card 5: Prefixes and Suffixes -->
+                <div onclick="startModule('derivation')" class="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-sm card-hover cursor-pointer flex flex-col justify-between group">
+                    <div class="space-y-3">
+                        <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-puzzle-piece"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-800">5. Prefijos y Sufijos</h3>
+                        <p class="text-xs text-slate-500 leading-relaxed">Palabras primitivas y derivadas, formación de adjetivos/sustantivos e identificación de intrusos.</p>
+                    </div>
+                    <div class="pt-4 flex items-center justify-between text-xs font-bold text-emerald-600 border-t border-slate-100 mt-4">
+                        <span>6 preguntas</span>
+                        <span class="flex items-center gap-1 group-hover:translate-x-1 transition-transform">Empezar <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                </div>
+
+                <!-- Card 6: Global Exam -->
+                <div onclick="startModule('exam')" class="bg-gradient-to-br from-indigo-600 to-violet-700 rounded-3xl p-6 text-white shadow-md card-hover cursor-pointer flex flex-col justify-between group">
+                    <div class="space-y-3">
+                        <div class="w-12 h-12 bg-white/20 text-white rounded-2xl flex items-center justify-center text-xl group-hover:scale-110 transition-transform backdrop-blur-sm">
+                            <i class="fa-solid fa-bolt text-yellow-300"></i>
+                        </div>
+                        <h3 class="text-lg font-bold">Reto Global Tema 2</h3>
+                        <p class="text-xs text-indigo-100 leading-relaxed">Prueba mixta aleatoria de 10 preguntas para evaluar todo lo aprendido en la unidad.</p>
+                    </div>
+                    <div class="pt-4 flex items-center justify-between text-xs font-bold text-yellow-300 border-t border-indigo-500/40 mt-4">
+                        <span>10 preguntas mixtas</span>
+                        <span class="flex items-center gap-1 group-hover:translate-x-1 transition-transform">Iniciar Reto <i class="fa-solid fa-play"></i></span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION: PRACTICE / QUIZ -->
+        <section id="sec-practice" class="hidden max-w-2xl mx-auto space-y-4">
+            <!-- Top Nav Controls -->
+            <div class="flex items-center justify-between">
+                <button onclick="showSection('home')" class="text-xs font-bold text-slate-500 hover:text-teal-700 flex items-center gap-1.5 transition">
+                    <i class="fa-solid fa-arrow-left"></i> Volver al menú
+                </button>
+                <div class="text-xs font-bold text-slate-400" id="quiz-progress-text">Pregunta 1 de 5</div>
+            </div>
+
+            <!-- Quiz Card -->
+            <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200/80 space-y-6">
+                <!-- Progress Bar -->
+                <div class="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
+                    <div id="quiz-progress-bar" class="bg-teal-600 h-full w-0 transition-all duration-300 rounded-full"></div>
+                </div>
+
+                <!-- Category Badge -->
+                <span id="quiz-category" class="inline-block px-3 py-1 rounded-full text-[11px] font-bold bg-teal-50 text-teal-700 border border-teal-200/50 uppercase tracking-wider">
+                    Categoría
+                </span>
+
+                <!-- Question Text -->
+                <h3 id="quiz-question" class="text-xl sm:text-2xl font-bold text-slate-800 leading-snug">
+                    ¿Cual es el infinitivo del verbo?
+                </h3>
+
+                <!-- Options List -->
+                <div id="quiz-options" class="space-y-3 pt-1">
+                    <!-- Dynamic Options -->
+                </div>
+
+                <!-- Feedback Box -->
+                <div id="quiz-feedback" class="hidden p-4 rounded-2xl text-xs sm:text-sm space-y-1.5 border">
+                    <div id="feedback-title" class="font-bold flex items-center gap-2 text-base"></div>
+                    <p id="feedback-detail" class="text-slate-600 leading-relaxed"></p>
+                </div>
+
+                <!-- Next Button -->
+                <button id="btn-next" onclick="nextQuestion()" class="hidden w-full bg-teal-600 hover:bg-teal-700 text-white font-bold py-3.5 rounded-2xl shadow-lg shadow-teal-600/20 transition flex items-center justify-center gap-2">
+                    <span>Siguiente pregunta</span> <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- SECTION: RESULTS -->
+        <section id="sec-results" class="hidden max-w-lg mx-auto text-center space-y-6 py-6">
+            <div class="bg-white rounded-3xl p-8 shadow-sm border border-slate-200/80 space-y-6">
+                <div class="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-3xl flex items-center justify-center text-4xl mx-auto shadow-inner">
+                    <i class="fa-solid fa-award"></i>
+                </div>
+                
+                <div class="space-y-1">
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-800">¡Entrenamiento completado!</h2>
+                    <p class="text-slate-500 text-sm">Has terminado las preguntas de esta sección.</p>
+                </div>
+
+                <!-- Stats -->
+                <div class="bg-slate-50 rounded-2xl p-4 flex justify-around items-center border border-slate-100">
+                    <div>
+                        <span class="block text-[10px] uppercase tracking-wider text-slate-400 font-bold">Aciertos</span>
+                        <span id="results-score" class="text-2xl font-black text-emerald-600">0 / 0</span>
+                    </div>
+                    <div class="h-8 w-px bg-slate-200"></div>
+                    <div>
+                        <span class="block text-[10px] uppercase tracking-wider text-slate-400 font-bold">Porcentaje</span>
+                        <span id="results-percent" class="text-2xl font-black text-teal-600">0%</span>
+                    </div>
+                </div>
+
+                <!-- Actions -->
+                <div class="space-y-2.5 pt-2">
+                    <button onclick="restartCurrentModule()" class="w-full bg-teal-600 hover:bg-teal-700 text-white font-bold py-3.5 rounded-2xl shadow-md transition">
+                        Repetir esta sección
+                    </button>
+                    <button onclick="showSection('home')" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-3.5 rounded-2xl transition">
+                        Volver al menú principal
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-white border-t border-slate-200/80 py-4 text-center text-xs text-slate-400 mt-auto">
+        Lengua Castellana 6º Primaria • Unidad 2 • Fichas y Contenidos de Clase
+    </footer>
+
+    <!-- JAVASCRIPT APP LOGIC -->
+    <script>
+        // QUESTION BANK ACCORDING TO PDF SPECIFICATIONS
+        const questionBank = {
+            verbs: [
+                {
+                    q: "¿A qué conjugación pertenece el verbo 'escribimos'?",
+                    options: ["1ª conjugación (-ar)", "2ª conjugación (-er)", "3ª conjugación (-ir)", "No pertenece a ninguna"],
+                    correct: 2,
+                    explanation: "Su infinitivo es 'escribir', que termina en -ir (3ª conjugación)."
+                },
+                {
+                    q: "Indica el MODO verbal en: '¡Ojalá gane mi equipo!'",
+                    options: ["Modo Indicativo (acciones reales)", "Modo Subjuntivo (deseos o dudas)", "Modo Imperativo (órdenes)", "Forma no personal"],
+                    correct: 1,
+                    explanation: "El modo subjuntivo expresa deseos, dudas o posibilidades ('ojalá gane')."
+                },
+                {
+                    q: "Indica el MODO verbal en: 'Cierra la luz antes de irte, por favor.'",
+                    options: ["Modo Indicativo", "Modo Subjuntivo", "Modo Imperativo", "Infinitivo"],
+                    correct: 2,
+                    explanation: "El modo imperativo expresa órdenes, instrucciones o peticiones ('cierra')."
+                },
+                {
+                    q: "¿Cuál de estas formas verbales es COMPUESTA?",
+                    options: ["Escribíamos", "Hemos comido", "Llegarán", "Compraron"],
+                    correct: 1,
+                    explanation: "Las formas compuestas tienen dos palabras: el verbo auxiliar 'haber' + participio ('hemos comido')."
+                },
+                {
+                    q: "Separa la raíz de la desinencia en 'llegaban'. ¿Cuál es la RAÍZ?",
+                    options: ["llega-", "lleg-", "-ban", "-aban"],
+                    correct: 1,
+                    explanation: "Se quita la terminación '-ar' del infinitivo 'llegar', obteniendo la raíz 'lleg-'."
+                },
+                {
+                    q: "¿Cuáles son las tres FORMAS NO PERSONALES del verbo?",
+                    options: ["Pasado, presente y futuro", "Singular, plural y neutro", "Infinitivo, gerundio y participio", "Indicativo, subjuntivo e imperativo"],
+                    correct: 2,
+                    explanation: "Las formas no personales son infinitivo (-ar/-er/-ir), gerundio (-ando/-iendo) y participio (-ado/-ido)."
+                },
+                {
+                    q: "¿Cuál es el GERUNDIO del verbo 'dormir'?",
+                    options: ["Dormido", "Durmiendo", "Dormirá", "Dormir"],
+                    correct: 1,
+                    explanation: "El gerundio de los verbos de la 3ª conjugación termina en -iendo (durmiendo)."
+                }
+            ],
+            accent: [
+                {
+                    q: "Completa correctamente: '_____ madre tiene un regalo para _____.'",
+                    options: ["Mí / mi", "Mi / mí", "Mi / mi", "Mí / mí"],
+                    correct: 1,
+                    explanation: "'Mi' (sin tilde) es posesivo. 'Mí' (con tilde) es pronombre personal."
+                },
+                {
+                    q: "Completa correctamente: '_____ sabes que yo no tengo _____ bolígrafo.'",
+                    options: ["Tú / tu", "Tu / tú", "Tú / tú", "Tu / tu"],
+                    correct: 0,
+                    explanation: "'Tú' (con tilde) es pronombre personal. 'Tu' (sin tilde) es el posesivo."
+                },
+                {
+                    q: "Completa correctamente: 'A _____ le gustaba montar en bici en _____ parque.'",
+                    options: ["el / él", "él / él", "él / el", "el / el"],
+                    correct: 2,
+                    explanation: "'Él' (con tilde) es pronombre personal. 'El' (sin tilde) es artículo."
+                },
+                {
+                    q: "En la oración: '_____ no llueve, él me dirá que _____', las palabras son:",
+                    options: ["Si / si", "Sí / sí", "Si / sí", "Sí / si"],
+                    correct: 2,
+                    explanation: "'Si' (sin tilde) indica condición. 'Sí' (con tilde) expresa afirmación."
+                },
+                {
+                    q: "Completa correctamente: 'Yo _____ que él _____ equivoca al escribir.'",
+                    options: ["se / sé", "sé / se", "sé / sé", "se / se"],
+                    correct: 1,
+                    explanation: "'Sé' (con tilde) procede del verbo saber. 'Se' (sin tilde) es pronombre."
+                },
+                {
+                    q: "¿Por qué lleva tilde 'té' en: 'Me gusta el té verde'?",
+                    options: ["Porque es palabra aguda", "Por tilde diacrítica para diferenciarlo del pronombre 'te'", "Porque todos los monosílabos llevan tilde", "Porque termina en vocal"],
+                    correct: 1,
+                    explanation: "Se usa la tilde diacrítica en 'té' para diferenciar el sustantivo (bebida) del pronombre 'te'."
+                }
+            ],
+            gj: [
+                {
+                    q: "Completamos los verbos 'esco_____er' y 'surgi_____':",
+                    options: ["g / g", "j / g", "g / j", "j / j"],
+                    correct: 0,
+                    explanation: "Se escriben con G los verbos cuyo infinitivo termina en -ger o -gir (escoger, surgir)."
+                },
+                {
+                    q: "¿Cuáles son las dos excepciones de los verbos acabados en -ger y -gir?",
+                    options: ["Coger y corregir", "Tejer y crujir", "Dirigir y elegir", "Exigir y recoger"],
+                    correct: 1,
+                    explanation: "Tejer y crujir se escriben con J, a diferencia del resto de verbos en -ger/-gir."
+                },
+                {
+                    q: "Se escriben con J las palabras terminadas en:",
+                    options: ["-gio, -gia, -gión", "geo- y gest-", "-aje, -eje, -jería", "-gional"],
+                    correct: 2,
+                    explanation: "Las palabras con terminaciones -aje, -eje y -jería van con J (ej. viaje, personaje, relojería)."
+                },
+                {
+                    q: "Las palabras 'geología' y 'geometría' llevan G porque:",
+                    options: ["Son verbos", "Empiezan por el prefijo geo- (tierra)", "Tienen el grupo gest-", "Terminan en -ía"],
+                    correct: 1,
+                    explanation: "Las palabras que empiezan por geo- siempre se escriben con G."
+                },
+                {
+                    q: "Completa: 'Rosa condu_____o durante todo el via_____e.'",
+                    options: ["g / g", "j / j", "g / j", "j / g"],
+                    correct: 1,
+                    explanation: "'Condujo' va con J (verbo sin g ni j en infinitivo) y 'viaje' va con J (-aje)."
+                },
+                {
+                    q: "¿Qué opción está escrita correctamente?",
+                    options: ["Extrangero y pasaje", "Extranjero y pasaje", "Extranjero y pasage", "Extrangero y pasage"],
+                    correct: 1,
+                    explanation: "Extranjero (termina en -jero) y pasaje (termina en -aje) llevan J."
+                }
+            ],
+            homophones: [
+                {
+                    q: "Completa: 'Puso el equipaje en la _____ del coche y vio una _____.'",
+                    options: ["vaca / baca", "baca / vaca", "baca / baca", "vaca / vaca"],
+                    correct: 1,
+                    explanation: "Baca = soporte en el coche. Vaca = animal."
+                },
+                {
+                    q: "Completa: 'El fontanero cambió el _____ de agua porque _____ una fuga.'",
+                    options: ["tubo / tuvo", "tuvo / tubo", "tubo / tubo", "tuvo / tuvo"],
+                    correct: 0,
+                    explanation: "Tubo = pieza cilíndrica. Tuvo = del verbo tener."
+                },
+                {
+                    q: "Completa: '¡_____! Me duele el dedo. ¿_____ alguien en casa?'",
+                    options: ["Hay / ¡Ay!", "¡Ay! / Hay", "¡Hay! / Ay", "Ay / Ay"],
+                    correct: 1,
+                    explanation: "¡Ay! indica dolor. Hay proviene del verbo haber."
+                },
+                {
+                    q: "Completa: 'Cuando el agua _____, apaga el fuego. La _____ del jardín creció.'",
+                    options: ["hierba / hierva", "hierva / hierba", "hierba / hierba", "hierva / hierva"],
+                    correct: 1,
+                    explanation: "Hierva es del verbo hervir (con V). Hierba es la planta (con B)."
+                },
+                {
+                    q: "Completa: 'Pablo _____ Iván son amigos. Éllos han _____ perdido las llaves.'",
+                    options: ["y / ha", "e / ha", "e / a", "y / a"],
+                    correct: 1,
+                    explanation: "Se usa 'e' en lugar de 'y' antes de sonido 'i'. 'Ha' lleva H por ser del verbo haber."
+                },
+                {
+                    q: "Completa: 'Ese chico es un _____ en las cartas. ¿_____ visto mi estuche?'",
+                    options: ["as / Has", "has / As", "as / As", "has / Has"],
+                    correct: 0,
+                    explanation: "As = carta o campeón. Has = del verbo haber (tú has visto)."
+                }
+            ],
+            derivation: [
+                {
+                    q: "¿Cómo se llama la partícula que se añade AL PRINCIPIO de una palabra primitiva?",
+                    options: ["Sufijo", "Prefijo", "Desinencia", "Lexema"],
+                    correct: 1,
+                    explanation: "Los prefijos se colocan delante de la palabra primitiva (ej. des-hacer)."
+                },
+                {
+                    q: "En la palabra 'desagradable', ¿cuál es el PREFIJO?",
+                    options: ["-able", "des-", "agrada-", "no tiene"],
+                    correct: 1,
+                    explanation: "El prefijo 'des-' aporta significado de negación u opuesto."
+                },
+                {
+                    q: "¿Qué sufijo se ha utilizado en la palabra 'rapidísimo'?",
+                    options: ["-azo (aumentativo)", "-ísimo (superlativo)", "-ito (diminutivo)", "-idad (sustantivo)"],
+                    correct: 1,
+                    explanation: "El sufijo '-ísimo' forma el superlativo de los adjetivos."
+                },
+                {
+                    q: "Identifica la palabra INTRUSA que NO tiene un prefijo real:",
+                    options: ["Subterráneo", "Submarino", "Subastar", "Subdirector"],
+                    correct: 2,
+                    explanation: "'Subastar' no lleva el prefijo sub- ('debajo de'); es la palabra entera."
+                },
+                {
+                    q: "¿Cuál es la palabra PRIMITIVA de 'floristería'?",
+                    options: ["Florista", "Flor", "Florecer", "Florero"],
+                    correct: 1,
+                    explanation: "'Flor' es la palabra origen o primitiva."
+                },
+                {
+                    q: "¿Qué significado aporta el prefijo 'anti-' en 'antivirus'?",
+                    options: ["Repetición", "Anterioridad", "Contrario u opuesto", "Debajo de"],
+                    correct: 2,
+                    explanation: "El prefijo 'anti-' expresa oposición o posición contraria."
+                }
+            ]
+        };
+
+        // GLOBAL APP STATE
+        let currentModuleKey = '';
+        let currentQuestions = [];
+        let currentIndex = 0;
+        let score = 0;
+        let totalScore = 0;
+        let selectedOption = null;
+
+        // UI SWITCHER
+        function showSection(sectionId) {
+            document.getElementById('sec-home').classList.add('hidden');
+            document.getElementById('sec-practice').classList.add('hidden');
+            document.getElementById('sec-results').classList.add('hidden');
+
+            document.getElementById(`sec-${sectionId}`).classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // MODULE INITIATION
+        function startModule(moduleKey) {
+            currentModuleKey = moduleKey;
+            currentIndex = 0;
+            score = 0;
+
+            if (moduleKey === 'exam') {
+                currentQuestions = [];
+                Object.keys(questionBank).forEach(key => {
+                    currentQuestions.push(...questionBank[key]);
+                });
+                // Shuffle array
+                currentQuestions = currentQuestions.sort(() => Math.random() - 0.5).slice(0, 10);
+            } else {
+                currentQuestions = [...questionBank[moduleKey]];
+            }
+
+            showSection('practice');
+            renderQuestion();
+        }
+
+        function restartCurrentModule() {
+            startModule(currentModuleKey);
+        }
+
+        // RENDER QUESTION
+        function renderQuestion() {
+            const qData = currentQuestions[currentIndex];
+            selectedOption = null;
+
+            // Header info
+            document.getElementById('quiz-progress-text').innerText = `Pregunta ${currentIndex + 1} de ${currentQuestions.length}`;
+            const percent = ((currentIndex) / currentQuestions.length) * 100;
+            document.getElementById('quiz-progress-bar').style.width = `${percent}%`;
+
+            // Category text
+            const catMap = {
+                verbs: 'Gramática: El Verbo',
+                accent: 'Ortografía: Tilde Diacrítica',
+                gj: 'Ortografía: Uso de G y J',
+                homophones: 'Vocabulario: Palabras Homófonas',
+                derivation: 'Vocabulario: Prefijos y Sufijos',
+                exam: 'Examen Global Tema 2'
+            };
+            document.getElementById('quiz-category').innerText = catMap[currentModuleKey] || 'Práctica';
+
+            // Question
+            document.getElementById('quiz-question').innerText = qData.q;
+
+            // Options
+            const optionsContainer = document.getElementById('quiz-options');
+            optionsContainer.innerHTML = '';
+
+            qData.options.forEach((optText, idx) => {
+                const btn = document.createElement('button');
+                btn.className = `w-full text-left p-4 rounded-2xl border border-slate-200 hover:border-teal-500 hover:bg-teal-50/30 font-semibold text-slate-700 transition flex items-center justify-between group`;
+                btn.onclick = () => selectOption(idx);
+                btn.innerHTML = `
+                    <span class="text-sm sm:text-base">${optText}</span>
+                    <span class="w-6 h-6 rounded-full border border-slate-300 group-hover:border-teal-500 flex items-center justify-center text-xs text-transparent group-hover:text-teal-600 transition">✓</span>
+                `;
+                optionsContainer.appendChild(btn);
+            });
+
+            // Reset Feedback & Next button
+            document.getElementById('quiz-feedback').classList.add('hidden');
+            document.getElementById('btn-next').classList.add('hidden');
+        }
+
+        // OPTION SELECTION
+        function selectOption(index) {
+            if (selectedOption !== null) return;
+            selectedOption = index;
+
+            const qData = currentQuestions[currentIndex];
+            const isCorrect = (index === qData.correct);
+
+            if (isCorrect) {
+                score++;
+                totalScore += 10;
+                document.getElementById('score').innerText = totalScore;
+            }
+
+            // Option Button Styles
+            const optionBtns = document.getElementById('quiz-options').children;
+            Array.from(optionBtns).forEach((btn, idx) => {
+                btn.disabled = true;
+                if (idx === qData.correct) {
+                    btn.className = "w-full text-left p-4 rounded-2xl border-2 border-emerald-500 bg-emerald-50 font-bold text-emerald-900 flex items-center justify-between shadow-sm";
+                } else if (idx === index && !isCorrect) {
+                    btn.className = "w-full text-left p-4 rounded-2xl border-2 border-rose-400 bg-rose-50 font-bold text-rose-900 flex items-center justify-between";
+                } else {
+                    btn.className = "w-full text-left p-4 rounded-2xl border border-slate-100 opacity-40 font-medium text-slate-400 flex items-center justify-between";
+                }
+            });
+
+            // Feedback Box
+            const feedbackBox = document.getElementById('quiz-feedback');
+            const feedbackTitle = document.getElementById('feedback-title');
+            const feedbackDetail = document.getElementById('feedback-detail');
+
+            feedbackBox.classList.remove('hidden', 'bg-emerald-50', 'bg-rose-50', 'border-emerald-200', 'border-rose-200');
+
+            if (isCorrect) {
+                feedbackBox.classList.add('bg-emerald-50', 'border-emerald-200');
+                feedbackTitle.className = 'font-bold flex items-center gap-2 text-emerald-800 text-base';
+                feedbackTitle.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-600"></i> ¡Respuesta Correcta!`;
+            } else {
+                feedbackBox.classList.add('bg-rose-50', 'border-rose-200');
+                feedbackTitle.className = 'font-bold flex items-center gap-2 text-rose-800 text-base';
+                feedbackTitle.innerHTML = `<i class="fa-solid fa-circle-xmark text-rose-600"></i> ¡Incorrecto!`;
+            }
+
+            feedbackDetail.innerText = qData.explanation;
+            document.getElementById('btn-next').classList.remove('hidden');
+        }
+
+        // NEXT QUESTION
+        function nextQuestion() {
+            currentIndex++;
+            if (currentIndex < currentQuestions.length) {
+                renderQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        // RESULTS
+        function showResults() {
+            showSection('results');
+            document.getElementById('results-score').innerText = `${score} / ${currentQuestions.length}`;
+            const percent = Math.round((score / currentQuestions.length) * 100);
+            document.getElementById('results-percent').innerText = `${percent}%`;
+        }
+    </script>
+</body>
+</html>
+```eof
+
+The web app is now fully compiled in the right-hand panel editor. You can click on **`Preview`** to interact with the full app directly.
